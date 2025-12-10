@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF‑8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O.B. Montessori Digital Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+  padding-top: 70px; 
+  transition: background 0.3s, color 0.3s;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1f1f1f;
+  color: #ffffff;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  z-index: 1000;
+  box-sizing: border-box;
+  transition: background 0.3s, padding 0.3s;
+}
+
+header.scrolled {
+  background-color: rgba(10, 10, 30, 0.95);
+  padding: 0.8rem 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+}
+
+.logo {
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: #0d47a1;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+  color: #ffcc00;
+  transform: scale(1.05);
+}
+
+.hero {
+  background: linear-gradient(to right, #1a237e, #0d47a1);
+  color: #ffffff;
+  text-align: center;
+  padding: 4rem 2rem 3rem;
+  margin-top: 0;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.cta-button {
+  background: linear-gradient(90deg, #ffcc00, #ffd633);
+  color: #1f1f1f;
+  padding: 0.9rem 1.8rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 30px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 204, 0.4);
+}
+
+section {
+  padding: 2rem 1.5rem; 
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  color: #ffcc00;
+  letter-spacing: 0.5px;
+}
+
+section p {
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #cccccc;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.cards .card {
+  background: #0d47a1;         
+  color: #ffffff;             
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6); 
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cards .card h3 {
+  color: #ffcc00;               
+}
+
+.cards .card p {
+  color: #f0f0f0;              
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+.testimonials {
+  background: linear-gradient(to bottom right, #0d47a1, #1a237e);
+  color: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fadeIn 1s ease-in-out;
+}
+.testimonials h2 {
+  color: #ffcc00; 
+}
+
+.testimonial {
+  font-style: italic;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.testimonial-author {
+  font-weight: bold;
+  color: #ffcc00;
+  margin-top: 0.5rem;
+}
+
+#faq {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.faq-item {
+  max-width: 800px;
+  margin: 1.5rem auto;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.faq-question {
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  background: #222;
+  color: #ffcc00;
+}
+
+.faq-answer {
+  display: block;
+  padding: 1rem 1.5rem;
+  background: #1b1b1b;
+  border-top: 1px solid #333;
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #333, transparent);
+  margin: 2rem auto;
+  width: 80%;
+}
+
+footer {
+  background: #0d0d0d;
+  color: #cccccc;
+  text-align: center;
+  padding: 2rem 20px;
+  font-size: 0.95rem;
+  border-top: 2px solid #222;
+  max-width: 1200px;  
+  margin: 0 auto;     
+  box-sizing: border-box;
+}
+
+footer p {
+  max-width: 1200px;    
+  margin: 0 auto;     
+  text-align: center;    
+  color: #cccccc;
+  font-size: 0.95rem;
+}
+
+#montessori-quote {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #2c2c2c;
+}
+
+#montessori-quote img {
+  max-width: 200px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+#montessori-quote blockquote {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #f0f0f0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#montessori-quote p {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #cccccc;
+}
+.section-box h2 {
+  color: #0d47a1; 
+  text-align: center; 
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.section-box {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2.5rem 2rem;
+  background-color: #1a1a1a;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  body {
+    padding-top: 90px;
+  }
+
+  .hero {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.campus-highlight {
+  background-color: transparent;
+  color: #ffffff;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.campus-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 0;
+  margin-bottom: 2rem;
+}
+
+.campus-text h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.campus-text h2 span {
+  font-weight: 700;
+}
+
+.campus-text p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.95;
+  line-height: 1.7;
+}
+
+.discover-link {
+  display: inline-block;
+  color: #ffcc00;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid #ffcc00;
+}
+
+.discover-link:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.campuses-section {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #0d0d0d; 
+}
+
+.campuses-section h2 {
+  font-size: 2em;
+  color: #004aad; 
+  margin-bottom: 10px;
+}
+
+.campuses-section p {
+  color: #cccccc;
+  margin-bottom: 40px;
+}
+
+.campus-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  width: 100%;
+  max-width: 2000px; 
+  margin: 0 auto; 
+}
+
+.campus-card {
+  background: #1a1a1a;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease;
+  width: 100%; 
+}
+
+.campus-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.campus-card h3 {
+  padding: 15px;
+  background-color: #0d47a1;
+  color: white;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.academics-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.academics-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.academics-card {
+  background: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+  max-width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.academics-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+}
+
+.academics-card img {
+  width: 100%;
+  height: 160px; 
+  object-fit: cover;
+  display: block;
+}
+
+.academics-card h3 {
+  background-color: #0d47a1;
+  color: #fff;
+  padding: 0.7rem;
+  font-size: 1rem;
+  margin: 0;
+  text-align: center;
+}
+.obmc-discovery {
+  background-color: #0d0d0d;
+  color: #fff;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.discovery-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #1a1a1a;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.5);
+  min-height: 420px;
+}
+
+.discovery-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.discovery-image {
+  flex: 1;
+  height: 100%;
+}
+
+.discovery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.discovery-text {
+  flex: 1;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  background: #111;
+}
+
+.discovery-text h3 {
+  color: #ffcc00;
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.discovery-text span {
+  color: #fff;
+}
+
+.latin {
+  color: #ffcc00;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.desc {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.values {
+  color: #ffcc00;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.quote {
+  background: #0d47a1;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  font-style: italic;
+  line-height: 1.6;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.discover-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #ffcc00;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid #ffcc00;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.discover-link:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+@media (max-width: 900px) {
+  .discovery-row,
+  .discovery-row.reverse {
+    flex-direction: column;
+  }
+
+  .discovery-text {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .discover-link {
+    align-self: center;
+  }
+}
+.montessori-founders {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 3rem;
+  align-items: center;
+}
+
+.founder {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background-color: #0d47a1;  
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  max-width: 900px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.founder.reverse {
+  flex-direction: row-reverse;
+}
+
+.founder:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.founder img {
+  width: 45%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.founder-text {
+  flex: 1;
+}
+
+.founder-text h4 {
+  color: #ffcc00;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.founder-text p {
+  color: #dddddd;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .founder, .founder.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .founder img {
+    width: 100%;
+  }
+
+}
+.admissions-details {
+  background: #111;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  max-width: 1100px;
+  margin: 2rem auto 4rem;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.admissions-steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.admission-step {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 10px;
+  flex: 1 1 300px;
+  max-width: 320px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admission-step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+.admission-step h3 {
+  color: #ffcc00;
+  margin-bottom: 0.8rem;
+}
+
+.admission-step p {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.admission-cta {
+  background: linear-gradient(145deg, #0d47a1, #1a237e);
+  color: #fff;
+  padding: 2.5rem 1.5rem;
+  border-radius: 12px;
+  margin: 3rem auto;
+  max-width: 700px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.admission-cta h3 {
+  font-size: 1.8rem;
+  color: #ffcc00;
+}
+
+.admission-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admission-faq {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.admission-faq h3 {
+  color: #ffcc00;
+  margin-bottom: 1rem;
+}
+
+.admission-faq ul {
+  list-style: none;
+  padding-left: 0;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.admission-faq li {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .admissions-steps {
+    flex-direction: column;
+  }
+}
+
+.founder-text h4 {
+  font-size: 2.4rem;  
+  color: #ffcc00;     
+  font-weight: bold;   
+  margin-bottom: 0.5rem;
+}
+
+.founder-text p {
+  font-size: 1.2rem; 
+  line-height: 1.7; 
+  color: #dddddd;    
+}
+
+.alumni-img {
+  width: 45%;          
+  max-width: 300px;    
+  height: auto;         
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 auto 20px; 
+}
+
+.alumni-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.alumni-section {
+  background-color: #0d47a1;  
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  color: #ffffff;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.alumni-section h2 {
+  color: #ffcc00;
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.alumni-section p {
+  color: #f0f0f0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.alumni-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.alumni-card {
+  background-color: #112d63; 
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 280px;              
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.alumni-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+}
+
+.alumni-img {
+  width: 100%;       
+  height: 280px;     
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.alumni-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .alumni-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .alumni-card {
+    width: 90%;
+  }
+}
+
+.alumni-section {
+  margin-bottom: 80px; 
+}
+
+.form-section-dark {
+  padding: 4rem 1rem;
+  display: flex;
+  justify-content: center;
+  background: #001e3c; 
+  color: white;
+}
+
+.form-container-dark {
+  background: #002b57;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.form-container-dark h2 {
+  font-size: 1.9rem;
+  margin-bottom: 0.3rem;
+  color: #ffffff;
+}
+
+.form-container-dark p {
+  color: #d4af37; 
+  margin-bottom: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  color: #ffffff;
+}
+
+input, select, textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: #003c75;
+  border: 1px solid #0a4d90;
+  color: white;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #b5c9e0;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-btn-dark {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  background: #d4af37; 
+  color: #001e3c; 
+  font-weight: bold;
+  border: none;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn-dark:hover {
+  background: #f0c85a;
+}
+
+      .map-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 10px;
+    }
+
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.25); 
+      pointer-events: none;
+    }
+
+
+
+  </style>
+</head>
+<body>
+</body>
+</html>
+
+  <header>
+    <div class="logo">O.B. Montessori</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#campuses">Campuses</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<section class="hero">
+  <h1>Educating Future Leaders</h1>
+  <p>Empowering students through the <strong>Montessori method</strong> and <strong>digital innovation</strong></p>
+  <a href="#programs" class="cta-button">Explore Programs</a>
+</section>
+
+<section class="campus-highlight">
+  <img 
+    src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/0e05ffa9-25d2-4761-b1dd-73c606642ed7/Drone10+copy.jpg"
+    alt="O.B. Montessori Campus"
+    class="campus-image" />
+  <div class="campus-text">
+    <h2>Educating for Life, <span>Leading with Purpose</span></h2>
+
+<p style="color: #ffffff; font-weight: bold;">
+  Welcome to O.B. Montessori Center!
+</p>
+
+<p>
+At O.B. Montessori, we nurture independent, responsible, and compassionate learners prepared for life and the world beyond school. We blend tradition and innovation to develop global citizens who are curious, confident, and ready to make a positive difference in their communities.
+</p>
+
+<p>
+Our mission is to transform students into self-developing and productive individuals who can succeed, direct, and influence the future of an ever-changing world.
+</p>
+
+
+<a href="#campuses" class="discover-link">DISCOVER <strong>OUR FACILITIES</strong> →</a>
+  </div>
+</section>
+
+  <section class="programs">
+    <img 
+       src="https://scontent.fceb6-3.fna.fbcdn.net/v/t39.30808-6/546583695_1205908628236923_7409519030732023944_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFk1TLR4pEQPyligunFiwIG2kNjsja1W67aQ2OyNrVbrnXRBWeYStpzxj0cDDPoHpYw0NybYWo_SKA_OaPQRnE5&_nc_ohc=XduVcWxQsbYQ7kNvwHFCC4l&_nc_oc=AdliLlo_9DuoGLBNy6a0FL8jvD3h-k5baKb4fBrGUMkImrz4MNH8r2G2Oi5AxVjpmIE&_nc_zt=23&_nc_ht=scontent.fceb6-3.fna&_nc_gid=Miu8IESuW4apKO_hEstg9w&oh=00_AfnMXFQS4nowxWnZElrMExBdQS06xSh2Xd9Gidc2Xp3ZzA&oe=693FB9EC"
+      style="display: block; margin: 0 auto 2rem; max-width: 100%; height: auto; border-radius: 10px;"
+    />
+
+   <section id="programs" class="programs">
+    <h2>Our Programs</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Casa (Ages 3–5)</h3>
+        <p>Our Casa program nurtures early childhood development through hands‑on, sensory‑based learning. Children build independence, concentration, and foundational skills in a warm, structured environment guided by Montessori principles.</p>
+      </div>
+      <div class="card">
+        <h3>Primary Grade School</h3>
+        <p>Designed for ages 6–12, this program emphasizes critical thinking, creativity, and self‑directed learning. Students explore language, math, science, and culture through interactive materials and collaborative projects.</p>
+      </div>
+      <div class="card">
+        <h3>Junior High School</h3>
+        <p>Our Junior High curriculum integrates academic rigor with character formation. Learners deepen their understanding of core subjects while developing leadership, communication, and problem‑solving skills.</p>
+      </div>
+      <div class="card">
+        <h3>Senior High School</h3>
+        <p>Senior High students choose specialized tracks aligned with their interests and career goals. The program blends advanced academics with vocational training, preparing students for college, entrepreneurship, or professional life.</p>
+      </div>
+    </div>
+  </section>
+
+<section class="obmc-discovery">
+  <div class="discovery-row">
+    <div class="discovery-text">
+      <h3>We inspire curious, independent learners to grow and make a difference.</h3>
+      <p class="desc">We inspire curious, independent learners to grow and make a difference.</p>
+      <p class="latin"><strong>Seipsum Facit Persona</strong></p>
+
+    </div>
+    <div class="discovery-image">
+      <img src="https://obmontessori.orangeapps.ph/landing/obmontessori/images/FV%20Facade.jpg" alt="OB Montessori students" />
+    </div>
+  </div>
+
+  <div class="discovery-row reverse">
+    <div class="discovery-image">
+      <img src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/053bbc8c-f68a-4a6f-ac1e-73adfc595e01/O.B.+Montessori+Center+Grade+School+Primary"/>
+    </div>
+    <div class="discovery-text">
+      <p class="quote">At OBMC, every experience is designed to nurture the learner at heart, inspiring curiosity, creativity, and a lifelong love of learning.</p>
+    </div>
+  </div>
+
+  <div class="discovery-row">
+    <div class="discovery-text">
+      <h3>Why OBMC...</h3>
+      <p class="quote">We act with honesty and care.<br>We consider the impact of our choices.<br>We nurture mind, body, and spirit.</p>
+    </div>
+    <div class="discovery-image">
+      <img src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/fc22b3a2-63f7-4bcf-9c46-36547a62b42d/RAF08473.JPG">
+    </div>
+  </div>
+
+  <div class="discovery-row reverse">
+    <div class="discovery-image">
+      <img src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/0bd933b3-baff-49ad-a136-becbc219422a/JAR_3796a.jpg"  />
+    </div>
+    <div class="discovery-text">
+      <h3>Designed for Learning, <span>Built for Discovery</span></h3>
+      <p>Inspiring minds, hearts, and community spirit.</p>
+      <a href="#campuses" class="discover-link">DISCOVER OUR FACILITIES →</a>
+    </div>
+  </div>
+</section>
+
+  <div class="section-box" id="about">
+    <h2>About O.B. Montessori</h2>
+    <p>
+      O.B. Montessori Center is a premier educational institution in the Philippines, founded on the principles of Dr. Maria Montessori. We nurture students to become confident, competent, and compassionate leaders through a holistic curriculum that blends academic excellence with character development. Our digital platform empowers learners and educators with modern tools for seamless collaboration and growth.
+    </p>
+  </div>
+
+  <h2 style="color: #0d47a1; font-size: 2.4rem; margin-top: 3rem; text-align:center; letter-spacing: 0.5px;">
+ Visionaries and Founders
+</h2>
+
+
+<div class="montessori-founders">
+  <div class="founder">
+    <img 
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFjS7ExJFbvYzHQ2nt5KmlMNEg4M52rDdvdA&s">
+    <div class="founder-text">
+      <h4><strong>Maria Montessori</strong></h4>
+      <p>Founder of the Montessori Method, she is an Italian physician and educator who revolutionized early childhood education with her child-centered approach.</p>
+    </div>
+  </div>
+
+  <div class="founder reverse">
+    <img 
+      src="https://montessori150.org/sites/default/files/styles/gallery/public/montessori/galleries/MariaMarioMontessoriIndia.jpg?h=9822fb10&itok=oqsyaq4-">
+    <div class="founder-text">
+      <h4><strong>Mario Montessori Sr.</strong></h4>
+      <p>Maria Montessori’s son and closest collaborator, who helped expand Montessori education globally and continue his mother’s legacy.</p>
+    </div>
+  </div>
+
+  <div class="founder">
+    <img 
+      src="https://www.philstar.com/images/authors/1659389.jpg">
+    <div class="founder-text">
+      <h4><strong>Preciosa Soliven</strong></h4>
+      <p>Founder of Operation Brotherhood Montessori Center, she brought the Montessori philosophy to the Philippines and promoted holistic education for Filipino youth.</p>
+    </div>
+  </div>
+
+  <div class="founder reverse">
+    <img 
+      src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/4da48e8f-4925-445f-b8b4-d61e92723f30/O.B.+Montessori+Center+Founder+Oscar+Arellano?format=2500w">
+    <div class="founder-text">
+      <h4><strong>Oscar Arellano</strong></h4>
+      <p>Foundational figure in the history of OBMC schools as he headed the board it was under.</p>
+    </div>
+  </div>
+</div>
+
+
+  <div class="section-box" id="admissions">
+    <h2>Admissions</h2>
+    <p>
+      At O.B. Montessori Center, we welcome students who are eager to grow in a nurturing and academically rigorous environment. Our admissions process is designed to identify learners who will thrive under the Montessori method and contribute positively to our community. We offer rolling admissions for Casa to Senior High School levels, with entrance assessments and orientation programs to ensure a smooth transition.
+    </p>
+  </div>
+<section class="admissions-details">
+  <div class="admissions-steps">
+    <div class="admission-step">
+      <h3>Step 1: Inquiry & Campus Tour</h3>
+      <p>Schedule a visit or attend our Open House to experience the Montessori learning environment firsthand.</p>
+    </div>
+    <div class="admission-step">
+      <h3>Step 2: Application & Assessment</h3>
+      <p>Submit your child’s documents online or at the campus. A short assessment and interview will follow.</p>
+    </div>
+    <div class="admission-step">
+      <h3>Step 3: Enrollment & Orientation</h3>
+      <p>Once accepted, families receive orientation materials to prepare for the Montessori journey ahead.</p>
+    </div>
+  </div>
+
+  <div class="admission-cta">
+    <h3>Ready to Begin?</h3>
+    <p>Join the O.B. Montessori community and give your child a head start on lifelong learning.</p>
+    <a href="#contact" class="cta-button">Apply Now</a>
+  </div>
+
+  <div class="admission-faq">
+    <h3>Admission Requirements</h3>
+    <ul>
+      <li>✔ Completed Application Form</li>
+      <li>✔ Birth Certificate</li>
+      <li>✔ Latest Report Card (if any)</li>
+      <li>✔ Two 1x1 Photos</li>
+      <li>For more details, email us at <strong>admissions@obmontessori.edu.ph</strong></li>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="form-container">
+    <h2>Student Admissions Form</h2>
+    <p>Please fill out all required fields.</p>
+
+    <form>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" required>
+        </div>
+
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date of Birth</label>
+          <input type="date" required>
+        </div>
+
+        <div class="form-group">
+          <label>Grade Level Applying For</label>
+          <select required>
+            <option value="">Select Grade</option>
+            <option>Casa</option>
+            <option>Primary</option>
+            <option>Intermediate</option>
+            <option>Junior High</option>
+            <option>Senior High</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Parent/Guardian Name</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="tel" required>
+      </div>
+
+      <div class="form-group">
+        <label>Additional Notes</label>
+        <textarea rows="5" placeholder="Enter any additional information..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Application</button>
+
+    </form>
+  </div>
+</section>
+
+  <div class="section-box" id="academics">
+  <h2>Academics</h2>
+  <p>
+    O.B. Montessori Center offers a comprehensive academic program grounded in the Montessori philosophy. The curriculum spans from <strong>Casa (ages 3–6)</strong> to <strong>Professional High School (ages 12–18)</strong>, integrating academic rigor with real-world skills and leadership development. Classrooms are designed to foster collaboration, hands-on exploration, and respect for learning, guided by trained Montessori educators.
+  </p>
+
+  <div class="academics-gallery">
+    <div class="academics-row top-row">
+      <div class="academics-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/92735a00-c408-472d-8bd6-73c26ca8a95a/CASA+PROGRAM+2+-+20240226_121149.jpg">
+        <h3>Casa</h3>
+      </div>
+      <div class="academics-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/657faeff-12bc-4b51-8191-a96f7179912d/PRIMARY+PROGRAM+4+-+RAF07977.JPG">
+        <h3>Primary</h3>
+      </div>
+      <div class="academics-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/fdabba98-61bf-4946-a1e2-246c208f13f8/1+20240226_094559+copy.jpg?format=2500w">
+        <h3>Intermediate</h3>
+      </div>
+    </div>
+    <div class="academics-row bottom-row">
+      <div class="academics-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/be8a19b1-6fa9-4d93-83f3-cccbfed8c577/JAR_3329a.jpg">
+        <h3>High School</h3>
+      </div>
+      <div class="academics-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/dd77fda9-d2bd-47aa-9576-830b020639f2/JAR_4005a+%281%29.jpg">
+        <h3>Senior High School</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="section-box" id="campuses">
+    <h2>Campuses</h2>
+    <p>
+      O.B. Montessori Center operates multiple campuses across Metro Manila and nearby provinces; Greenhills, Sta. Ana, Las Piñas, Angeles, and Fairview, each reflecting Montessori principles of order, beauty, and independence.
+    </p>
+  </div>
+
+<section id="campuses" class="campuses-section">
+  <h2>Our Campuses</h2>
+  <p>Discover our vibrant learning communities across different locations.</p>
+
+  <div class="campus-gallery">
+    <div class="campus-card">
+      <img src="https://lh3.googleusercontent.com/p/AF1QipP9DJVGQWr1Jwi5QpLPNEZvufERoAZV_0V-m1q5=s1360-w1360-h1020-rw">
+      <h3>Fairview</h3>
+    </div>
+
+    <div class="campus-card">
+      <img src="https://obmontessori.orangeapps.ph/landing/obmontessori/images/Angeles%20Facade.jpg">
+      <h3>Angeles</h3>
+    </div>
+
+    <div class="campus-card">
+      <img src="https://obmontessori.orangeapps.ph/landing/obmontessori/images/Greenhills%20Facade.jpg">
+      <h3>Greenhills</h3>
+    </div>
+    <div class="campus-card">
+      <img src="https://obmontessori.orangeapps.ph/landing/obmontessori/images/Las%20Pinas%20Facade.jpg">
+      <h3>Las Piñas</h3>
+    </div>
+
+    <div class="campus-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/676bd718-88f6-489b-957e-b5633d7e52d1/DSC06837.jpg">
+      <h3>Sta Ana</h3>
+    </div>
+  </div>
+</section>
+
+  <div class="section-box" id="contact">
+    <h2>Contact Us</h2>
+    <p>
+      <strong>Email:</strong> info@obmontessori.edu.ph<br>
+      <strong>Phone:</strong> (02) 8722‑9726<br>
+      <strong>Facebook:</strong> <a href="https://www.facebook.com/obmontessori" target="_blank">facebook.com/obmontessori</a><br>
+      <strong>Address:</strong> 724 Shaw Blvd., Mandaluyong City, Metro Manila, Philippines
+    </p>
+  </div>
+
+ </style>
+</head>
+<body>
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.010195768809!2d121.0424702!3d14.5838234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c9e8e3e4c4b3%3A0x8d4e5a7c5e6c4f7e!2sO.B.%20Montessori%20Center%20-%20Greenhills!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+    <div class="map-overlay"></div>
+  </div>
+</body>
+</html>
+
+
+  <section class="testimonials">
+    <h2>Student Testimonials</h2>
+    <div class="testimonial">
+      “O.B. Montessori helped me discover my passion for music and dance. The teachers truly care!”
+      <div class="testimonial-author">– Sofia, Grade 10</div>
+    </div>
+    <div class="testimonial">
+      “The digital platform makes learning so engaging. I love the blooket and kahoot games!”
+      <div class="testimonial-author">– Miguel, Grade 6</div>
+    </div>
+  </section>
+
+  <hr />
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-question">What is the O.B. Montessori Digital Platform?</div>
+      <div class="faq-answer">It’s an online portal that allows students and parents to access announcements, schedules, grades, and school resources easily from any device.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How do I log in?</div>
+      <div class="faq-answer">Log in using your school‑issued email and password. If you’ve forgotten your credentials, click “Forgot Password?” to reset them.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can parents and students use the same account?</div>
+      <div class="faq-answer">No. Only students have accounts to view their grades and answer assesments.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Is my information secure?</div>
+      <div class="faq-answer">Absolutely. The platform follows strict data protection standards and uses encrypted connections to keep all user data safe.</div>
+    </div>
+  </section>
+
+<div class="alumni-section">
+
+  <h2>Alumni</h2>
+  <p>OBMC graduates lead, inspire, and transform.</p>
+  <p>See how O.B. Montessori shaped their path.</p>
+  <p>Get inspired by their stories.</p>
+
+  <div class="alumni-cards">
+    <div class="alumni-card">
+      <div class="alumni-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/efff8729-3794-4c27-beb2-4df0beccabd9/Christine+%E2%80%9CTin-tin%E2%80%9D+Bersola-Babao.png?format=1000w">
+      </div>
+      <h3>Christine "Tin-Tin" Bersola Babao</h3>
+      <p>
+        Christine Bersola-Babao was shaped by OBMC’s environment, developing discipline,
+        creativity, and a strong foundation she carried into her media career.
+      </p>
+    </div>
+
+    <div class="alumni-card">
+      <div class="alumni-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/664c7ae50eea9c731b37e817/ffa26f07-c3d4-43a4-a2e7-47c2416c8645/Ma.+Lea+Carmen+I.+Salonga?format=1000w">
+      </div>
+      <h3>MA. Lea Carmen J. Salonga</h3>
+      <p>
+        Lea Salonga’s OBMC foundation helped develop her discipline, confidence, and excellence,
+        contributing to her global success as a performer.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+  <section id="montessori-quote">
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Maria_Montessori_%28portrait%29.jpg/500px-Maria_Montessori_%28portrait%29.jpg"
+      alt="Maria Montessori"
+    >
+    <blockquote>
+      "The greatest sign of success for a teacher is to be able to say, 'The children are now working as if I did not exist.'"
+    </blockquote>
+    <p>— Maria Montessori</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 O.B. Montessori Center. All rights reserved.</p>
+  </footer>
+</body>
+</html>
